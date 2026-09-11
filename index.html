@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>人生终结倒计时</title>
+<style>
+:root{--ink:#e5e3de;--muted:#8d8d89;--line:#323330}
+*{box-sizing:border-box}
+html{min-height:100%;background:#090a09}
+body{margin:0;min-height:100svh;color:var(--ink);font-family:"Microsoft YaHei",sans-serif;display:grid;place-items:center;padding:36px 4vw;background:radial-gradient(ellipse at 60% 35%,#1a1c19 0,transparent 62%),#090a09}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:5;background:repeating-linear-gradient(0deg,transparent 0 3px,#ffffff02 3px 4px)}
+.page{width:min(1240px,100%);animation:enter 1.2s ease both}
+.masthead{display:flex;align-items:center;justify-content:space-between;border-top:1px solid #8b8c86;padding:18px 0 24px;font:10px "Courier New",monospace;letter-spacing:.22em;color:var(--muted)}
+.kicker{font-family:"Microsoft YaHei",sans-serif;letter-spacing:.35em;color:#ccc}
+.edition{display:flex;gap:16px;align-items:center}.edition::before{content:"";width:5px;height:5px;background:#bbb;box-shadow:0 0 10px #ffffff50;animation:breathe 3s infinite}
+.stage{display:grid;grid-template-columns:minmax(210px, .73fr) minmax(0,1.9fr);gap:clamp(36px,5vw,80px);align-items:center;padding:18px 0 42px}
+.portrait-panel{margin:0;position:relative;align-self:stretch;display:flex;flex-direction:column;justify-content:center}
+.image-frame{position:relative;border:1px solid #494a46;background:#111;padding:7px;max-width:310px;width:100%;margin:auto}
+.image-frame::after{content:"";position:absolute;inset:7px;pointer-events:none;box-shadow:inset 0 0 45px #0005}
+.portrait{display:block;width:100%;height:auto;max-height:560px;object-fit:contain;filter:grayscale(1) contrast(1.06) brightness(.85)}
+figcaption{max-width:310px;width:100%;margin:16px auto 0;display:flex;justify-content:space-between;color:#8e8f89;font:10px "Courier New",monospace;letter-spacing:.2em}
+.content{min-width:0}.eyebrow{font:10px "Courier New",monospace;letter-spacing:.32em;color:var(--muted);margin-bottom:18px}
+h1{font-family:"Songti SC",SimSun,serif;font-weight:400;font-size:clamp(29px,3.1vw,44px);letter-spacing:.12em;margin:0 0 15px;line-height:1.35}
+.statement{font-size:11px;letter-spacing:.08em;color:var(--muted);line-height:1.9}
+.counter{margin-top:34px;padding-top:22px;border-top:1px solid var(--line)}
+.time-heading{display:flex;justify-content:space-between;align-items:center;font:10px "Courier New",monospace;letter-spacing:.15em;color:var(--muted)}
+.day-row{display:flex;align-items:baseline;gap:24px;margin:6px 0 5px}
+.days{font-family:"Arial Narrow",Arial,sans-serif;font-weight:200;font-size:clamp(96px,11.5vw,160px);letter-spacing:-.055em;line-height:1.13;font-variant-numeric:tabular-nums;text-shadow:0 0 35px #ffffff0c}
+.day-label{font-size:12px;letter-spacing:.22em;color:#b6b6b0;white-space:nowrap}
+.clock{display:grid;grid-template-columns:1fr 18px 1fr 18px 1fr 18px 1.35fr;align-items:start;max-width:560px;margin-top:9px}
+.unit{display:flex;flex-direction:column;gap:10px}.digits{font-family:"Courier New",monospace;font-variant-numeric:tabular-nums;font-weight:400;font-size:clamp(32px,4vw,50px);line-height:1;letter-spacing:-.045em}
+.unit small{font-size:9px;color:var(--muted);letter-spacing:.12em}.sep{font:28px "Courier New",monospace;color:#54564f;padding-top:5px}.milliseconds .digits{color:#92948d}
+.progress{margin-top:32px}.meta{display:flex;justify-content:space-between;gap:10px;color:var(--muted);font-size:10px;letter-spacing:.06em}.track{margin-top:12px;height:2px;background:#30312c;position:relative}.fill{height:100%;width:0;background:#d1d3c8;position:relative;min-width:1px}.fill::after{content:"";position:absolute;right:0;top:-3px;height:8px;width:1px;background:#f3f3e8}.progress-note{margin-top:10px;font:9px "Courier New",monospace;letter-spacing:.12em;color:#666960}
+footer{border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:24px;align-items:center;padding:22px 0 0}.quote{margin:0;font-family:SimSun,serif;font-size:13px;letter-spacing:.2em;color:#aaa}.footer-mark{font:9px "Courier New",monospace;letter-spacing:.2em;color:#70736a;text-align:right}
+@keyframes enter{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}@keyframes breathe{50%{opacity:.35}}
+@media(min-width:1600px){.page{width:1320px}.stage{padding-top:26px;padding-bottom:50px;gap:90px}.days{font-size:180px}}
+@media(max-width:800px){body{padding:22px}.stage{grid-template-columns:190px minmax(0,1fr);gap:28px}.days{font-size:90px}.day-row{gap:15px}.digits{font-size:32px}h1{font-size:27px}.counter{margin-top:22px}.progress{margin-top:24px}.day-label{font-size:10px}.clock{grid-template-columns:1fr 10px 1fr 10px 1fr 10px 1.35fr}.sep{font-size:22px}.meta{font-size:9px}}
+@media(max-width:580px){body{padding:22px 20px}.edition{font-size:8px;letter-spacing:.1em}.stage{display:flex;flex-direction:column;gap:28px;padding-bottom:30px}.portrait-panel{align-self:center;width:145px}.portrait{max-height:275px}figcaption{font-size:8px;margin-top:10px}.content{width:100%}h1{font-size:28px}.eyebrow{margin-bottom:12px}.days{font-size:108px}.digits{font-size:37px}.counter{margin-top:24px}.clock{grid-template-columns:1fr 14px 1fr 14px 1fr 14px 1.35fr}.meta{font-size:9px}.time-heading{font-size:9px}footer{align-items:flex-start;flex-direction:column;gap:12px}.quote{font-size:12px}.footer-mark{text-align:left}.statement{font-size:10px}}
+@media(prefers-reduced-motion:reduce){.page,.edition::before{animation:none}}
+</style>
+</head>
+<body>
+<main class="page">
+<header class="masthead"><div class="kicker">B桶 · 灵堂</div><div class="edition">MEMENTO MORI / 01</div></header>
+<section class="stage">
+<figure class="portrait-panel"><div class="image-frame"><img class="portrait" src="主人公.jpg" alt="主人公照片"></div><figcaption><span>1986 — 2036</span><span>IN MEMORIAM</span></figcaption></figure>
+<div class="content">
+<div class="eyebrow">THE LAST DECADE</div>
+<h1>B桶剩下的十年</h1>
+<div class="statement">生于约 1986 年　·　终结时刻：50 岁生日</div>
+<section class="counter" aria-label="距离设定终结时刻的剩余时间">
+<div class="time-heading"><span>剩余时间 / TIME REMAINING</span><span id="status">COUNTING DOWN</span></div>
+<div class="day-row"><span class="days" id="days">3652</span><span class="day-label">天 / DAYS</span></div>
+<div class="clock">
+<div class="unit"><span class="digits" id="hours">00</span><small>小时 / HRS</small></div><span class="sep">:</span>
+<div class="unit"><span class="digits" id="minutes">00</span><small>分钟 / MIN</small></div><span class="sep">:</span>
+<div class="unit"><span class="digits" id="seconds">00</span><small>秒 / SEC</small></div><span class="sep">.</span>
+<div class="unit milliseconds"><span class="digits" id="milliseconds">000</span><small>毫秒 / MS</small></div>
+</div>
+</section>
+<div class="progress"><div class="meta"><span>40 岁</span><span>生命进度：40 → 50</span><span>50 岁</span></div><div class="track"><div class="fill" id="fill"></div></div><div class="progress-note" id="end-date"></div></div>
+</div>
+</section>
+<footer><p class="quote">傻逼的人生，毫无价值。</p><span class="footer-mark">TEMPUS FUGIT<br><br>40 — 50 / A DECADE IN TIME</span></footer>
+</main>
+<script>
+// 未提供生日：将页面制作时刻设为40岁起点，固定保存，不随刷新重置。
+const start = new Date(1789117790761);
+const end = new Date(start);
+end.setFullYear(start.getFullYear() + 10);
+const total = end - start;
+const elements = Object.fromEntries(['days','hours','minutes','seconds','milliseconds','fill','status','end-date'].map(id => [id,document.getElementById(id)]));
+const pad = (value, width=2) => String(value).padStart(width,'0');
+elements['end-date'].textContent = `设定终点 / ${end.getFullYear()}.${pad(end.getMonth()+1)}.${pad(end.getDate())} ${pad(end.getHours())}:${pad(end.getMinutes())}:${pad(end.getSeconds())} · 本地时间`;
+function tick(){
+ const left = Math.max(0,end.getTime()-Date.now());
+ const values = {days:pad(Math.floor(left/86400000),4),hours:pad(Math.floor(left/3600000)%24),minutes:pad(Math.floor(left/60000)%60),seconds:pad(Math.floor(left/1000)%60),milliseconds:pad(Math.floor(left%1000),3)};
+ for(const key in values) if(elements[key].textContent!==values[key]) elements[key].textContent=values[key];
+ elements.fill.style.width = `${Math.min(100,Math.max(0,(1-left/total)*100))}%`;
+ if(left>0) requestAnimationFrame(tick); else elements.status.textContent='TIME HAS COME';
+}
+tick();
+</script>
+</body>
+</html>
