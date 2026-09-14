@@ -34,25 +34,42 @@ h1{font-family:"Songti SC",SimSun,serif;font-weight:400;font-size:clamp(29px,3.1
 .unit small{font-size:9px;color:var(--muted);letter-spacing:.12em}.sep{font:28px "Courier New",monospace;color:#54564f;padding-top:5px}.milliseconds .digits{color:#92948d}
 .progress{margin-top:32px}.meta{display:flex;justify-content:space-between;gap:10px;color:var(--muted);font-size:10px;letter-spacing:.06em}.track{margin-top:12px;height:2px;background:#30312c;position:relative}.fill{height:100%;width:0;background:#d1d3c8;position:relative;min-width:1px}.fill::after{content:"";position:absolute;right:0;top:-3px;height:8px;width:1px;background:#f3f3e8}.progress-note{margin-top:10px;font:9px "Courier New",monospace;letter-spacing:.12em;color:#666960}
 footer{border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:24px;align-items:center;padding:22px 0 0}.quote{margin:0;font-family:SimSun,serif;font-size:13px;letter-spacing:.2em;color:#aaa}.footer-mark{font:9px "Courier New",monospace;letter-spacing:.2em;color:#70736a;text-align:right}
+.life-actions{display:flex;align-items:center;gap:22px;flex-wrap:wrap;margin-top:26px;padding-top:20px;border-top:1px solid var(--line)}
+.revive{appearance:none;background:#111;border:1px solid #494a46;color:#c9c9c3;font:10px "Courier New",monospace;letter-spacing:.26em;padding:12px 20px;cursor:pointer;transition:border-color .25s,color .25s,background .25s}
+.revive:hover{border-color:#8b8c86;color:#f0efe8;background:#151715}
+.revive:focus-visible{outline:1px solid #8b8c86;outline-offset:3px}
+.revive:active{background:#1d1f1b}
+.revive.pulse{animation:revive-pulse .55s ease}
+.revive.deny{animation:revive-deny .4s ease}
+.revive-meta{display:flex;flex-direction:column;gap:7px;min-width:0}
+.revive-tally{font:10px "Courier New",monospace;letter-spacing:.16em;color:#70736a}
+.revive-tally b{color:#d1d3c8;font-weight:400;font-variant-numeric:tabular-nums}
+.revive-msg{font:10px "Courier New",monospace;letter-spacing:.14em;color:#b6b6b0;min-height:1em}
+.revive-msg.is-warn{color:#b0706e}
+.revive-wait{color:#70736a}
+.fly{position:fixed;left:0;top:0;z-index:20;pointer-events:none;white-space:nowrap;will-change:transform,opacity;font:400 14px "Courier New",monospace;letter-spacing:.08em;color:#e5e3de;text-shadow:0 0 12px #ffffff30}
+@keyframes revive-pulse{0%{box-shadow:0 0 0 0 #ffffff1f}100%{box-shadow:0 0 0 16px #ffffff00}}
+@keyframes revive-deny{0%,100%{transform:translateX(0)}20%{transform:translateX(-3px)}40%{transform:translateX(3px)}60%{transform:translateX(-2px)}80%{transform:translateX(2px)}}
 @keyframes enter{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}@keyframes breathe{50%{opacity:.35}}
 @media(min-width:1600px){.page{width:1320px}.stage{padding-top:26px;padding-bottom:50px;gap:90px}.days{font-size:180px}}
 @media(max-width:800px){body{padding:22px}.stage{grid-template-columns:190px minmax(0,1fr);gap:28px}.days{font-size:90px}.day-row{gap:15px}.digits{font-size:32px}h1{font-size:27px}.counter{margin-top:22px}.progress{margin-top:24px}.day-label{font-size:10px}.clock{grid-template-columns:1fr 10px 1fr 10px 1fr 10px 1.35fr}.sep{font-size:22px}.meta{font-size:9px}}
 @media(max-width:580px){body{padding:22px 20px}.edition{font-size:8px;letter-spacing:.1em}.stage{display:flex;flex-direction:column;gap:28px;padding-bottom:30px}.portrait-panel{align-self:center;width:145px}.portrait{max-height:275px}figcaption{font-size:8px;margin-top:10px}.content{width:100%}h1{font-size:28px}.eyebrow{margin-bottom:12px}.days{font-size:108px}.digits{font-size:37px}.counter{margin-top:24px}.clock{grid-template-columns:1fr 14px 1fr 14px 1fr 14px 1.35fr}.meta{font-size:9px}.time-heading{font-size:9px}footer{align-items:flex-start;flex-direction:column;gap:12px}.quote{font-size:12px}.footer-mark{text-align:left}.statement{font-size:10px}}
 @media(prefers-reduced-motion:reduce){.page,.edition::before{animation:none}}
+@media(max-width:580px){.life-actions{flex-direction:column;align-items:stretch;gap:13px}.revive{width:100%;letter-spacing:.22em;padding:13px 16px}.revive-meta{align-items:center;gap:6px}}
 </style>
 </head>
 <body>
 <main class="page">
 <header class="masthead"><div class="kicker">B桶 · 灵堂</div><div class="edition">MEMENTO MORI / 01</div></header>
 <section class="stage">
-<figure class="portrait-panel"><div class="image-frame"><img class="portrait" src="https://raw.githubusercontent.com/sd8288288/Btong/main/%E4%B8%BB%E4%BA%BA%E5%85%AC.jpg" alt="主人公照片"></div><figcaption><span>1986 — 2036</span><span>IN MEMORIAM</span></figcaption></figure>
+<figure class="portrait-panel"><div class="image-frame"><img class="portrait" src="https://raw.githubusercontent.com/sd8288288/Btong/main/%E4%B8%BB%E4%BA%BA%E5%85%AC.jpg" alt="主人公照片"></div><figcaption><span>1985 — 2035</span><span>IN MEMORIAM</span></figcaption></figure>
 <div class="content">
 <div class="eyebrow">THE LAST DECADE</div>
 <h1>B桶剩下的十年</h1>
-<div class="statement">生于约 1986 年　·　终结时刻：50 岁生日</div>
+<div class="statement">生于 1985 年 10 月 3 日　·　终结时刻：50 岁生日（2035.10.03）</div>
 <section class="counter" aria-label="距离设定终结时刻的剩余时间">
 <div class="time-heading"><span>剩余时间 / TIME REMAINING</span><span id="status">COUNTING DOWN</span></div>
-<div class="day-row"><span class="days" id="days">3652</span><span class="day-label">天 / DAYS</span></div>
+<div class="day-row"><span class="days" id="days">3305</span><span class="day-label">天 / DAYS</span></div>
 <div class="clock">
 <div class="unit"><span class="digits" id="hours">00</span><small>小时 / HRS</small></div><span class="sep">:</span>
 <div class="unit"><span class="digits" id="minutes">00</span><small>分钟 / MIN</small></div><span class="sep">:</span>
@@ -61,28 +78,157 @@ footer{border-top:1px solid var(--line);display:flex;justify-content:space-betwe
 </div>
 </section>
 <div class="progress"><div class="meta"><span>40 岁</span><span>生命进度：40 → 50</span><span>50 岁</span></div><div class="track"><div class="fill" id="fill"></div></div><div class="progress-note" id="end-date"></div></div>
+<section class="life-actions" aria-label="续命">
+<button class="revive" id="revive" type="button" title="每次点击为总剩余时长增加 1 秒，同一浏览器内点击间隔需 ≥ 3 秒">续命 +1 秒</button>
+<div class="revive-meta">
+<div class="revive-tally">已续命 <b id="bonus">0</b> 秒</div>
+<div class="revive-msg" id="revive-msg"><span id="revive-msg-main"></span><span class="revive-wait" id="revive-wait"></span></div>
+</div>
+</section>
 </div>
 </section>
 <footer><p class="quote">傻逼的人生，毫无价值。</p><span class="footer-mark">TEMPUS FUGIT<br><br>40 — 50 / A DECADE IN TIME</span></footer>
 </main>
 <script>
-// 未提供生日：将页面制作时刻设为40岁起点，固定保存，不随刷新重置。
-const start = new Date(1789117790761);
-const end = new Date(start);
-end.setFullYear(start.getFullYear() + 10);
-const total = end - start;
-const elements = Object.fromEntries(['days','hours','minutes','seconds','milliseconds','fill','status','end-date'].map(id => [id,document.getElementById(id)]));
+// 已确认真实生日：1985-10-03（本地时间）
+// 起点 = 40 岁生日 2025-10-03　终点 = 50 岁生日 2035-10-03，基础全程 3652 天
+// 「续命 +1 秒」把秒数累加进总剩余时长，存入本浏览器 localStorage，刷新/重开不重置
+const birth = new Date(1985, 9, 3, 0, 0, 0, 0);
+const start = new Date(2025, 9, 3, 0, 0, 0, 0);
+const baseEnd = new Date(2035, 9, 3, 0, 0, 0, 0);
+const REVIVE_STEP = 1000;
+const REVIVE_COOLDOWN = 3000;
+const BONUS_KEY = 'btong.life.bonus';
+const STAMP_KEY = 'btong.life.lastRevive';
+const store = {
+ read(key){ try { const value = Number(localStorage.getItem(key)); return Number.isFinite(value) && value > 0 ? value : 0; } catch (error) { return 0; } },
+ write(key, value){ try { localStorage.setItem(key, String(value)); } catch (error) {} }
+};
+let bonus = store.read(BONUS_KEY);
+let lastRevive = store.read(STAMP_KEY);
+let end = new Date(baseEnd.getTime() + bonus);
+let total = end - start;
+const elements = Object.fromEntries(['days','hours','minutes','seconds','milliseconds','fill','status','end-date','bonus','revive','revive-msg','revive-msg-main','revive-wait'].map(id => [id,document.getElementById(id)]));
+const msgEl = elements['revive-msg'];
+const msgMain = elements['revive-msg-main'];
+const msgWait = elements['revive-wait'];
 const pad = (value, width=2) => String(value).padStart(width,'0');
-elements['end-date'].textContent = `设定终点 / ${end.getFullYear()}.${pad(end.getMonth()+1)}.${pad(end.getDate())} ${pad(end.getHours())}:${pad(end.getMinutes())}:${pad(end.getSeconds())} · 本地时间`;
+function renderNote(){
+ const tail = bonus > 0 ? `　+　续命 ${Math.round(bonus/1000)} 秒` : '';
+ elements['end-date'].textContent = `生日 / ${birth.getFullYear()}.${pad(birth.getMonth()+1)}.${pad(birth.getDate())}　·　设定终点 / ${end.getFullYear()}.${pad(end.getMonth()+1)}.${pad(end.getDate())} ${pad(end.getHours())}:${pad(end.getMinutes())}:${pad(end.getSeconds())}${tail} · 本地时间`;
+ elements.bonus.textContent = Math.round(bonus/1000);
+}
+renderNote();
+let ticking = false;
 function tick(){
+ ticking = true;
  const left = Math.max(0,end.getTime()-Date.now());
  const values = {days:pad(Math.floor(left/86400000),4),hours:pad(Math.floor(left/3600000)%24),minutes:pad(Math.floor(left/60000)%60),seconds:pad(Math.floor(left/1000)%60),milliseconds:pad(Math.floor(left%1000),3)};
  for(const key in values) if(elements[key].textContent!==values[key]) elements[key].textContent=values[key];
  elements.fill.style.width = `${Math.min(100,Math.max(0,(1-left/total)*100))}%`;
- if(left>0) requestAnimationFrame(tick); else elements.status.textContent='TIME HAS COME';
+ if(left>0) requestAnimationFrame(tick); else { ticking = false; elements.status.textContent='TIME HAS COME'; }
 }
 tick();
+let msgTimer = null;
+let waitTimer = null;
+function clearMessage(){
+ clearTimeout(waitTimer);
+ msgEl.classList.remove('is-warn');
+ msgMain.textContent = '';
+ msgWait.textContent = '';
+}
+function showMessage(main, wait, warn){
+ msgMain.textContent = main;
+ msgWait.textContent = wait || '';
+ msgEl.classList.toggle('is-warn', !!warn);
+ clearTimeout(msgTimer);
+ if(!wait) msgTimer = setTimeout(clearMessage, 2000);
+}
+function replay(node, className){
+ node.classList.remove(className);
+ void node.offsetWidth;
+ node.classList.add(className);
+}
+function denyRevive(){
+ clearTimeout(waitTimer);
+ replay(elements.revive, 'deny');
+ const loop = () => {
+  const remain = REVIVE_COOLDOWN - (Date.now() - lastRevive);
+  if(remain <= 0){ clearMessage(); return; }
+  showMessage('续命不可过于频繁', `（还需 ${(remain/1000).toFixed(1)}s）`, true);
+  waitTimer = setTimeout(loop, 100);
+ };
+ loop();
+}
+// 点击成功时飘出一个 +1s：从按钮中心沿随机二次贝塞尔曲线飞向照片，末段渐隐
+function spawnFly(){
+ if(typeof document.createElement !== 'function') return;
+ if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+ const button = elements.revive;
+ const photo = document.querySelector('.portrait');
+ if(!button || !photo) return;
+ const b = button.getBoundingClientRect();
+ const p = photo.getBoundingClientRect();
+ const startX = b.left + b.width/2 + (Math.random()*2-1)*10;
+ const startY = b.top + b.height/2 + (Math.random()*2-1)*8;
+ const endX = p.left + p.width*(0.2 + Math.random()*0.6);
+ const endY = p.top + p.height*(0.18 + Math.random()*0.64);
+ const dx = endX - startX, dy = endY - startY;
+ const dist = Math.hypot(dx,dy) || 1;
+ const nx = -dy/dist, ny = dx/dist;
+ const side = Math.random() < 0.5 ? -1 : 1;
+ const bow = (0.28 + Math.random()*0.42) * dist * side;
+ const cx = (startX+endX)/2 + nx*bow;
+ const cy = (startY+endY)/2 + ny*bow - dist*(0.08 + Math.random()*0.18);
+ const rotFrom = (Math.random()*2-1)*18;
+ const rotTo = rotFrom + (Math.random()*2-1)*34;
+ const scaleTo = 0.82 + Math.random()*0.34;
+ const duration = 950 + Math.random()*600;
+ const node = document.createElement('span');
+ node.className = 'fly';
+ node.textContent = '+1s';
+ node.style.transform = `translate(${startX}px,${startY}px)`;
+ document.body.appendChild(node);
+ const frames = [];
+ const samples = 16;
+ for(let i=0;i<=samples;i++){
+  const t = i/samples;
+  const e = 1 - (1-t)*(1-t);
+  const u = 1 - e;
+  const x = u*u*startX + 2*u*e*cx + e*e*endX;
+  const y = u*u*startY + 2*u*e*cy + e*e*endY;
+  frames.push({
+   transform: `translate(${x}px,${y}px) rotate(${rotFrom + (rotTo-rotFrom)*e}deg) scale(${1 + (scaleTo-1)*e})`,
+   opacity: t < 0.5 ? 1 : Math.max(0, 1 - (t-0.5)/0.5),
+   offset: t
+  });
+ }
+ const done = () => { if(node.parentNode) node.parentNode.removeChild(node); };
+ try {
+  const anim = node.animate(frames, { duration, easing: 'linear', fill: 'forwards' });
+  anim.onfinish = done;
+  anim.oncancel = done;
+ } catch (error) {}
+ setTimeout(done, duration + 500);
+}
+elements.revive.addEventListener('click', () => {
+ const now = Date.now();
+ if(now - lastRevive < REVIVE_COOLDOWN){ denyRevive(); return; }
+ clearTimeout(waitTimer);
+ lastRevive = now;
+ store.write(STAMP_KEY, lastRevive);
+ bonus += REVIVE_STEP;
+ store.write(BONUS_KEY, bonus);
+ end = new Date(baseEnd.getTime() + bonus);
+ total = end - start;
+ renderNote();
+ replay(elements.revive, 'pulse');
+ spawnFly();
+ elements.status.textContent = 'LIFE EXTENDED';
+ showMessage('+1 秒 已计入剩余时长', `（累计 ${Math.round(bonus/1000)}s）`, false);
+ if(!ticking) tick();
+ setTimeout(() => { if(Date.now() < end.getTime()) elements.status.textContent = 'COUNTING DOWN'; }, 1400);
+});
 </script>
 </body>
 </html>
-
